@@ -31,20 +31,42 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    flavorDimensions "version"
+
+    productFlavors {
+        free {
+            dimension "version"
+            applicationIdSuffix '.free'
+        }
+
+        paid {
+            dimension "version"
+            applicationIdSuffix '.paid'
+        }
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':funnyJavaJokes')
+    implementation project(':showjokes')
     endpointsServer project(path: ':backend', configuration: 'endpoints')
+
+    // Resolve dependency conflicts with ads library
+    freeImplementation 'com.android.support:support-v4:27.1.1'
+    freeImplementation 'com.android.support:customtabs:27.1.1'
+    freeImplementation 'com.google.android.gms:play-services-ads:15.0.1'
+
+    // Support library
     implementation 'com.android.support:appcompat-v7:27.1.1'
-    implementation 'com.android.support:support-v4:27.1.1'
-    implementation 'com.android.support:support-media-compat:27.1.1'
-    implementation 'com.android.support:customtabs:27.1.1'
-    implementation 'com.google.android.gms:play-services-ads:15.0.0'
+
+    // Google libraries
     implementation 'com.google.api-client:google-api-client:1.23.0'
     implementation 'com.google.http-client:google-http-client-android:1.23.0'
     implementation 'com.google.code.findbugs:jsr305:3.0.2'
 
+    // Test libraries
     androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
