@@ -1,19 +1,26 @@
 package com.udacity.gradle.builditbigger;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
+
+import com.juancoob.nanodegree.and.funnyjavajokes.JokeTeller;
+import com.juancoob.nanodegree.and.showjokes.ShowJokes;
 
 
 public class MainActivity extends AppCompatActivity {
+
+    public static final String JOKE = "joke";
+    private JokeTeller mJokeTeller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mJokeTeller = new JokeTeller();
     }
 
 
@@ -40,7 +47,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void tellJoke(View view) {
-        Toast.makeText(this, "derp", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, ShowJokes.class);
+        intent.putExtra(JOKE, mJokeTeller.getfunnyJavaJoke());
+        startActivity(intent);
     }
 
 
