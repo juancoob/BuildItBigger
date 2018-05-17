@@ -7,20 +7,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.juancoob.nanodegree.and.funnyjavajokes.JokeTeller;
 import com.juancoob.nanodegree.and.showjokes.ShowJokes;
 
 
 public class MainActivity extends AppCompatActivity {
 
     public static final String JOKE = "joke";
-    private JokeTeller mJokeTeller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mJokeTeller = new JokeTeller();
     }
 
 
@@ -47,9 +44,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void tellJoke(View view) {
-        Intent intent = new Intent(this, ShowJokes.class);
-        intent.putExtra(JOKE, mJokeTeller.getfunnyJavaJoke());
-        startActivity(intent);
+        new EndpointsAsyncTask(new JokeCallBack() {
+            @Override
+            public void showJoke(String joke) {
+                Intent intent = new Intent(MainActivity.this, ShowJokes.class);
+                intent.putExtra(JOKE, joke);
+                startActivity(intent);
+            }
+        }).execute();
     }
 
 
