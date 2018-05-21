@@ -72,4 +72,5 @@ dependencies {
     })
 
     testImplementation 'junit:junit:4.12'
+    freeImplementation 'com.android.support.test.espresso:espresso-idling-resource:3.0.2'
 }
