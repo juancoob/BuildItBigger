@@ -15,6 +15,13 @@
         android:layout_height="wrap_content"
         android:text="@string/instructions" />
 
+    <ProgressBar
+        android:id="@+id/pb_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
