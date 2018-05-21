@@ -33,6 +33,15 @@ public class MainActivity extends AppCompatActivity {
                 .build());
 
         mInterstitialAd.setAdListener(new AdListener() {
+
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+                if(!getCountingIdlingResource().isIdleNow()) {
+                    getCountingIdlingResource().decrement();
+                }
+            }
+
             @Override
             public void onAdClosed() {
                 super.onAdClosed();
@@ -76,10 +85,6 @@ public class MainActivity extends AppCompatActivity {
                 hideLoader();
                 mIntentToShowJokes = new Intent(MainActivity.this, ShowJokes.class);
                 mIntentToShowJokes.putExtra(JOKE, joke);
-
-                if(!getCountingIdlingResource().isIdleNow()) {
-                    getCountingIdlingResource().decrement();
-                }
 
                 if(mInterstitialAd.isLoaded()) {
                     mInterstitialAd.show();
