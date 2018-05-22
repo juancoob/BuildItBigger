@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         mInterstitialAd.setAdListener(new AdListener() {
 
             @Override
+            @VisibleForTesting
             public void onAdLoaded() {
                 super.onAdLoaded();
                 if(!getCountingIdlingResource().isIdleNow()) {
