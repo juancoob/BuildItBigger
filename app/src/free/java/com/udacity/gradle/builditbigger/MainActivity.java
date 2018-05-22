@@ -12,7 +12,7 @@ import android.view.View;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
-import com.juancoob.nanodegree.and.showjokes.ShowJokes;
+import com.juancoob.nanodegree.and.showjokes.ShowJokesActivity;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void showJoke(String joke) {
                 hideLoader();
-                mIntentToShowJokes = new Intent(MainActivity.this, ShowJokes.class);
+                mIntentToShowJokes = new Intent(MainActivity.this, ShowJokesActivity.class);
                 mIntentToShowJokes.putExtra(JOKE, joke);
 
                 if(mInterstitialAd.isLoaded()) {

@@ -7,7 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.juancoob.nanodegree.and.showjokes.ShowJokes;
+import com.juancoob.nanodegree.and.showjokes.ShowJokesActivity;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void showJoke(String joke) {
                 hideLoader();
-                Intent intent = new Intent(MainActivity.this, ShowJokes.class);
+                Intent intent = new Intent(MainActivity.this, ShowJokesActivity.class);
                 intent.putExtra(JOKE, joke);
                 startActivity(intent);
             }

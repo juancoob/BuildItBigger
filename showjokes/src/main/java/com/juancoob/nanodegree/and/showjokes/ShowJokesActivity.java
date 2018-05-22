@@ -7,7 +7,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 
-public class ShowJokes extends AppCompatActivity {
+public class ShowJokesActivity extends AppCompatActivity {
 
     public static final String JOKE = "joke";
 
